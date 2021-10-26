@@ -38,13 +38,13 @@ width: 100px
 <%
 String param = request.getParameter("q1");
 
-if (param == null || !param.equals("java")) {
+if (param == null ||param.equals("")) {
 %>
-	<p>자바 사용자가 아닙니다</p>
+	<p> 사용자가 아닙니다</p>
 <%
 } else {
 %>
-	<p>자바 사용자이군요</p>
+	<p> <%=param %> 사용자이군요</p>
 <%
 }
 %>
@@ -65,21 +65,3 @@ if (param == null ) {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
