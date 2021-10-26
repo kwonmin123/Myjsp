@@ -25,13 +25,18 @@ width: 100px
 <p><%= request.getParameter("q") %></p>
 
 <hr>
-<input class="input" id="input1" type="search" autocomplete="off" spellcheck="false" role="combobox" aria-live="polite" placeholder=" 검색 또는 URL 입력">
-<button>입력</button>
-<input class="input" id="input2"type="search" autocomplete="off" spellcheck="false" role="combobox" aria-live="polite" placeholder=" 검색 또는 URL 입력">
-<button>입력</button>
+<form>
+
+<input class="input" id="input1" name="q1"  autocomplete="off" spellcheck="false" role="combobox" aria-live="polite" placeholder=" 검색 또는 URL 입력">
+
+
+<input class="input" id="input2" name="q2"  autocomplete="off" spellcheck="false" role="combobox" aria-live="polite" placeholder=" 검색 또는 URL 입력">
+
+<input type="submit">
+</form>
 
 <%
-String param = request.getParameter("q");
+String param = request.getParameter("q1");
 
 if (param == null || !param.equals("java")) {
 %>
