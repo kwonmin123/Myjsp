@@ -40,11 +40,25 @@ String param = request.getParameter("q1");
 
 if (param == null || !param.equals("java")) {
 %>
-	<p>자바 사용자가 아니군요</p>
+	<p>자바 사용자가 아닙니다</p>
 <%
 } else {
 %>
 	<p>자바 사용자이군요</p>
+<%
+}
+%>
+
+<%
+String param2 = request.getParameter("q2");
+
+if (param == null ) {
+%>
+	<p>검색어를 입력해주세요</p>
+<%
+} else {
+%>
+	<p><%=param2 %>를 검색합니다</p>
 <%
 }
 %>
