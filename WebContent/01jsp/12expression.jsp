@@ -20,7 +20,7 @@ map.put("javascript", "script");
 <%--code 작성 --%>
 <%
 for(String key:map.keySet()){
-	out.print("<h1>"+key+"는 "+map.get(key)+"입니다</h1>");
+	out.print("<h1> {$}"+key+"는 "+map.get(key)+"입니다</h1>");
 %>
 <%-- 두개 합칠수도 있음 --%>
 <h1><%=key %>는 <%=map.get(key) %> 입니다</h1>
