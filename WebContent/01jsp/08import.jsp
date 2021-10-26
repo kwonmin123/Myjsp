@@ -12,6 +12,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>import</h1>
+<%
+	out.println(new Date());
+%>
+<br>
+<%
+	ArrayList<String> arr1 = new ArrayList<>();
+	HashMap<String, String> map1 = new HashMap<>();
+	HashSet<String> set1 = new HashSet<>();
+%>
 </body>
 </html>
