@@ -23,8 +23,8 @@ private int divide(int a,int b){
 </head>
 <body>
 <%= add(5,7) %><br>
-<%= subtract(5,7) %><br>
-<%= multi(5,7) %><br>
-<%= divide(5,7) %><br>
+<%= subtract(10,2) %><br>
+<%= multi(10,25) %><br>
+<%= divide(99,3) %><br>
 </body>
 </html>
