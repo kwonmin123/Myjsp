@@ -8,16 +8,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+span {
+    border: 7px solid black;
+}
+</style>
 <body>
 <p>좋아하는 색 선택(하나만)</p>
 
 <!-- form>(input:r[name=color][value])*5+input:s -->
 <form action="">
-	<input type="radio" name="color" id="" value="red"> 빨강
-	<input type="radio" name="color" id="" value="blue"> 파랑
-	<input type="radio" name="color" id="" value="yellow"> 노랑
-	<input type="radio" name="color" id="" value="green"> 녹색
-	<input type="radio" name="color" id="" value="white"> 흰색
+	<input type="radio" name="color" id="" value="red"> <span style="background-color:red;">빨강</span>
+	<input type="radio" name="color" id="" value="blue"> <span style="background-color:blue;">파랑</span>
+	<input type="radio" name="color" id="" value="yellow"> <span style="background-color:yellow;">노랑</span>
+	<input type="radio" name="color" id="" value="green"> <span style="background-color:green;">초록</span>
+	<input type="radio" name="color" id="" value="white"> <span style="background-color:white;">하양</span>
 	<input type="submit" value="전송">
 </form>
 
@@ -27,7 +32,7 @@
 String val = request.getParameter("color");
 
 if (val != null) {
-	out.print(val);
+	out.print("<div style='background-color:"+val+ "'>"+val+"</div>");
 }
 %>
 </body>
