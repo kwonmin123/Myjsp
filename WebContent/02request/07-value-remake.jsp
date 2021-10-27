@@ -29,16 +29,18 @@ if(num1==null){
 	out.print("<p>상품이 없습니다</p>");
 }
 else {
-if(num1.equals("0")||num1.equals("1")||num1.equals("2")||num1.equals("3")){
 int index=Integer.parseInt(num1);
+if(num1.equals("0")||num1.equals("1")||num1.equals("2")||num1.equals("3")){
 	
 %>
 <p><%=index %>번 상품은 <%=list.get(index) %> 입니다</p>
 <%
 } else{
 
+
 %>
-<p> 상품이 아마 없습니다</p>
+
+<p> <%=index %>번 상품은 준비중입니다</p>
 <%
 	}
 }
