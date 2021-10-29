@@ -1,13 +1,13 @@
 package sample01;
 
-public class Mybook {
+public class MyBook {
 	private String title;
 	private int price;
 
 	
 	
 	
-	public Mybook(String title, int price) {
+	public MyBook(String title, int price) {
 		super();
 		this.title = title;
 		this.price = price;
@@ -25,5 +25,4 @@ public class Mybook {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
 }
