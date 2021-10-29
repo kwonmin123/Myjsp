@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
-<%@ page import="sample01.Mybook"%>    
+<%@ page import="sample01.MyBook"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <%
-Mybook textbook = new Mybook("교과서", 5000);
+	MyBook textbook = new MyBook("교과서", 5000);
 %>
 </body>
 </html>
