@@ -14,7 +14,7 @@
 
 <hr>
 <h3>절대 경로 링크</h3>
-<a href="/jsp1025/04path/02browser2.jsp">2번 파일로 이동</a>
+<a href="/homeJsp/04path/02browser2.jsp">2번 파일로 이동</a>
 
 <h3>상대 경로 링크</h3>
 <a href="02browser2.jsp">2번 파일로 이동 상대 경로</a>
