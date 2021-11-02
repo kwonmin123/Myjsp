@@ -18,8 +18,6 @@
 	<input type="password" name="password" placeholder="암호"> <br>
 	<input type="submit" value="로그인">
 </form>
-
-
 </body>
 </html>
 
