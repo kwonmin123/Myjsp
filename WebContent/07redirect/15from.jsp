@@ -14,7 +14,7 @@ map.put("param2",URLEncoder.encode("hello world", "utf-8"));
 map.put("param3",URLEncoder.encode("스프링", "utf-8"));
 
 String add ="?";
-for(Entry a :map.entrySet()){
+for(Entry<String,String> a :map.entrySet()){
 	add+=a.getKey()+"="+a.getValue()+"&";
 }
 
