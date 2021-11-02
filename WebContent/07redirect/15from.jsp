@@ -18,7 +18,7 @@ for(Entry a :map.entrySet()){
 	add+=a.getKey()+"="+a.getValue()+"&";
 }
 
-System.out.print(add);
+//System.out.print(add);
 String loc="15to.jsp"+add;
 response.sendRedirect(loc);
 %>
