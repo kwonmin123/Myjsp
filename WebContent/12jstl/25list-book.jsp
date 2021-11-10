@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% request.setCharacterEncoding("utf-8"); %>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@ table, th, td {
 <title>Insert title here</title>
 </head>
 <body>
-<h1>책 목록</h1>
+<h1>책 목록 ${fn:length(books)}</h1>
 
 <a href="25book-form.jsp">책 등록하기</a>
 
@@ -45,12 +46,12 @@ table, th, td {
 		
 		<c:forEach items="${books }" var="book" varStatus="status">
 			<tr>
-				<td>${status.count }</td>
-				<td>${book.title }</td>
-				<td>${book.writer }</td>
-				<td>${book.price }</td>
-				<td>${book.publisher }</td>
-				<td>${book.stock }</td>
+				<td><c:out value="${status.count }"></c:out></td>
+				<td><c:out value="${book.title }"></c:out></td>
+				<td><c:out value="${book.writer }"></c:out></td>
+				<td><c:out value="${book.price }"></c:out></td>
+				<td><c:out value="${book.publisher }"></c:out></td>
+				<td><c:out value="${book.stock }"></c:out></td>
 			</tr>
 		</c:forEach>
 	</table>
