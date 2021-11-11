@@ -48,14 +48,14 @@ pageContext.setAttribute("key2", "seoul");
 
 <hr>
 ${data}
-<p>1:${key1+[3] }</p>
-<p>2:${data[key1]["nickName"] }</p>
+<%-- <p>1:${key1+[3] }</p>
+ --%><p>2:${data[key1]["nickName"] }</p>
 <p>3:${data[key1]["age"] }</p>
 <p>4:${data[key1]["vip"] }</p>
 
-<p>5:${[nickName] }</p>
+<%-- <p>5:${[nickName] }</p>
 <p>6:${[key2] }</p>
-완벽히 이해함
+ --%>완벽히 이해함
 [] 는 이전 변수중에 받은 키 값을 의미함
 \${data}는 받은 어트리뷰트중 data를 의미함 뒤에 .을 붙일수 있는데
 참조값 안으로 들어간다는 의미
