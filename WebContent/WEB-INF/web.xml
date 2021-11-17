@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
-  <display-name>homeJsp</display-name>
+  <display-name>jsp20211025</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -10,12 +10,14 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- 세션 설정 -->
   <session-config>
-  <!-- 분단위세션만료 -->
-  <session-timeout>30</session-timeout>
+  	<!-- 분 단위 -->
+  	<session-timeout>30</session-timeout>
   </session-config>
   
-<!-- 서블릿 설정 -->
+  
+  <!-- 서블릿 설정 -->
   <servlet>
   	<servlet-name>servlet0103</servlet-name>
   	<servlet-class>servlet01.S03Servlet</servlet-class>
@@ -33,4 +35,49 @@
   	<servlet-name>servlet0104</servlet-name>
   	<url-pattern>/servlet01/servlet04</url-pattern>
   </servlet-mapping>
+  
+  <!-- 필터 설정 -->
+  <filter>
+  	<filter-name>f03filter</filter-name>
+  	<filter-class>filter01.F03Filter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>f03filter</filter-name>
+  	<url-pattern>/filterex1/s03</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>f04filter</filter-name>
+  	<filter-class>filter01.F04Filter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>f04filter</filter-name>
+  	<url-pattern>/filterex1/s04</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>f05filter</filter-name>
+  	<filter-class>filter02.F05Filter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>f05filter</filter-name>
+  	<url-pattern>/filterex2/s01</url-pattern>
+  	<url-pattern>/filterex2/s02</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>f06filter</filter-name>
+  	<filter-class>filter02.F06Filter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>f06filter</filter-name>
+  	<url-pattern>/filterex2/*</url-pattern>
+  </filter-mapping>
 </web-app>
+
+
+
+
+
+
+
