@@ -10,6 +10,17 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!--ServletContextListner 설정  -->
+   <listener>
+  <listener-class>listener01.AppListener03</listener-class>
+  </listener>
+  <listener>
+  <listener-class>listener01.AppListener04</listener-class>
+  </listener>
+ <listener>
+  <listener-class>listener01.AppListener05</listener-class>
+  </listener>
+ 
   <!-- 세션 설정 -->
   <session-config>
   	<!-- 분 단위 -->
@@ -73,6 +84,15 @@
   	<filter-name>f06filter</filter-name>
   	<url-pattern>/filterex2/*</url-pattern>
   </filter-mapping>
+<!-- Book App Character Encoding Filter -->
+	<filter>
+		<filter-name>BookCharEncodingFilter</filter-name>
+		<filter-class>servlet08.S01BookCharEncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>BookCharEncodingFilter</filter-name>
+		<url-pattern>/servlet08/*</url-pattern>
+	</filter-mapping>
 </web-app>
 
 
