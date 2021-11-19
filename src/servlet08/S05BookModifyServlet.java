@@ -59,7 +59,7 @@ public class S05BookModifyServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		List<Bean06> list = (List<Bean06>) session.getAttribute("books");
 		
-		request.setCharacterEncoding("utf-8");
+		// request.setCharacterEncoding("utf-8");
 		
 		// 2. request 분석/가공
 		String indexStr = request.getParameter("index");
