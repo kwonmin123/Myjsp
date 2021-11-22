@@ -41,7 +41,7 @@ public class JDBC02Servlet extends HttpServlet {
 		
 		try (Connection con = pool.getConnection(); // db와의 연결 정보를 가진 객체
 			Statement stmt = con.createStatement(); // 쿼리실행을 위한 객체
-			) {0
+			) {
 			ResultSet rs = stmt.executeQuery(sql); // 쿼리 실행 결과를 저장한 객체
 			
 			if (rs.next()) {
