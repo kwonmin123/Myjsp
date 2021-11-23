@@ -62,7 +62,7 @@ public class JDBC07Servlet2 extends HttpServlet {
 				int i = 1;
 				
 				Customer bean = new Customer();
-				bean.setCustomerID(rs.getString(i++));
+				bean.setCustomerID(rs.getInt(i++));
 				bean.setCustomerName(rs.getString(i++));
 				bean.setContactName(rs.getString(i++));
 				bean.setAddress(rs.getString(i++));
