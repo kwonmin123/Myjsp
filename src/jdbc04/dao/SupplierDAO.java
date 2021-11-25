@@ -125,6 +125,43 @@ public class SupplierDAO {
 		return rowCount==1;
 	}
 
+	public Supplier selectById(Connection con, int spID) {
+		String sql = "SELECT SupplierName, ContactName, Address, City, "
+				+ "          PostalCode, Country, Phone "
+				+ "FROM Suppliers "
+				+ "WHERE SupplierID = ?";
+		
+		Supplier sp = new Supplier();
+		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setInt(1, spID);
+			
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					String supplierName = rs.getString("SupplierName");
+					String contactName = rs.getString("ContactName");
+					String address = rs.getString("Address");
+					String city = rs.getString("City");
+					String postalCode = rs.getString("PostalCode");
+					String country = rs.getString("Country");
+					String phone = rs.getNString("Phone");
+					
+					sp.setSupplierID(spID);
+					sp.setSupplierName(supplierName);
+					sp.setContactName(contactName);
+					sp.setAddress(address);
+					sp.setCity(city);
+					sp.setPostalCode(postalCode);
+					sp.setCountry(country);
+					sp.setPhone(phone);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+		return sp;
+	}
+	
 
 	//public boolean insert(Connection con, Supplier supplier) {
 	//		String sql = "INSERT INTO Suppliers (SupplierName, ContactName, Address, City, PostalCode, Country, Phone) "
