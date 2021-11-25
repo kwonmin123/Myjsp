@@ -18,7 +18,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <h1>고객 수정</h1>
+        <h1>공급자 수정</h1>
         
         <!-- form>(.form-group>label[for=input$]+input.form-control#input$[name])*5 -->
         <form action="" method="post">
