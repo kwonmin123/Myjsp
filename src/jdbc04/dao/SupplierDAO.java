@@ -68,7 +68,7 @@ public class SupplierDAO {
 		boolean ok = false;
 		try(PreparedStatement pstm = con.prepareStatement(sql)){
 			int i =1;
-			
+
 			pstm.setString(i++, sp.getSupplierName());
 			pstm.setString(i++, sp.getContactName());
 			pstm.setString(i++, sp.getAddress());
@@ -77,41 +77,80 @@ public class SupplierDAO {
 			pstm.setString(i++, sp.getCountry());
 			pstm.setString(i++, sp.getPhone());
 			ok= pstm.executeUpdate()==1;
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			}
-		
-		
-		
+		}
+
+
+
 		return ok;
 	}
 
-//public boolean insert(Connection con, Supplier supplier) {
-//		String sql = "INSERT INTO Suppliers (SupplierName, ContactName, Address, City, PostalCode, Country, Phone) "
-//				+ "VALUES (?, ?, ?, ?, ?, ?, ?) ";
-//		boolean ok = false;
-//		
-//		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-//			
-//			// 물음표 채우기
-//			int i = 1;
-//			pstmt.setString(i++, supplier.getSupplierName());
-//			pstmt.setString(i++, supplier.getContactName());
-//			pstmt.setString(i++, supplier.getAddress());
-//			pstmt.setString(i++, supplier.getCity());
-//			pstmt.setString(i++, supplier.getPostalCode());
-//			pstmt.setString(i++, supplier.getCountry());
-//			pstmt.setString(i++, supplier.getPhone());
-//			
-//			ok = pstmt.executeUpdate() == 1;
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return ok;
-//	}
+	public boolean update(Connection con, Supplier supplier) {
+		// TODO Auto-generated method stub
+		int rowCount =0;
+		String sql = "UPDATE Suppliers " +
+				"SET  " +
+				"	SupplierName = ?, " +
+				"    ContactName = ?, " +
+				"    Address = ?, " +
+				"    City = ?, " +
+				"    PostalCode = ?, " +
+				"    Country = ?, " +
+				"    Phone = ? " +
+				"WHERE " +
+				"    SupplierID = ? ";
+
+		try (PreparedStatement pstm = con.prepareStatement(sql)){
+			int i= 1;
+			pstm.setString(i++, supplier.getSupplierName());
+			pstm.setString(i++, supplier.getContactName());
+			pstm.setString(i++, supplier.getAddress());
+			pstm.setString(i++, supplier.getCity());
+			pstm.setString(i++, supplier.getPostalCode());
+			pstm.setString(i++, supplier.getCountry());
+			pstm.setString(i++, supplier.getPhone());
+			pstm.setInt(i++, supplier.getSupplierID());
+
+
+			rowCount=pstm.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+
+
+
+		return rowCount==1;
+	}
+
+
+	//public boolean insert(Connection con, Supplier supplier) {
+	//		String sql = "INSERT INTO Suppliers (SupplierName, ContactName, Address, City, PostalCode, Country, Phone) "
+	//				+ "VALUES (?, ?, ?, ?, ?, ?, ?) ";
+	//		boolean ok = false;
+	//		
+	//		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+	//			
+	//			// 물음표 채우기
+	//			int i = 1;
+	//			pstmt.setString(i++, supplier.getSupplierName());
+	//			pstmt.setString(i++, supplier.getContactName());
+	//			pstmt.setString(i++, supplier.getAddress());
+	//			pstmt.setString(i++, supplier.getCity());
+	//			pstmt.setString(i++, supplier.getPostalCode());
+	//			pstmt.setString(i++, supplier.getCountry());
+	//			pstmt.setString(i++, supplier.getPhone());
+	//			
+	//			ok = pstmt.executeUpdate() == 1;
+	//			
+	//		} catch (Exception e) {
+	//			e.printStackTrace();
+	//		}
+	//		
+	//		return ok;
+	//	}
 
 }
 
