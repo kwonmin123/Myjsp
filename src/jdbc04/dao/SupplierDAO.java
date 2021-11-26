@@ -161,6 +161,21 @@ public class SupplierDAO {
 	
 		return sp;
 	}
+
+	public boolean deleteById(Connection con, int supplierID) {
+
+		String sql ="DELETE FROM Suppiers WHERE SupplierID = ?";
+		try (PreparedStatement pstm = con.prepareStatement(sql)){
+			pstm.setInt(1, supplierID);
+			int cnt =pstm.executeUpdate();
+			
+			return cnt==1;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return false;
+	}
 	
 
 	//public boolean insert(Connection con, Supplier supplier) {
