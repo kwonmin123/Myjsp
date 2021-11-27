@@ -36,13 +36,13 @@ public class CustomerDAO {
 				+ "FROM Customers WHERE Country = ?";
 
 		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-			
+
 			pstmt.setString(1, country);
-			
+
 			try (ResultSet rs = pstmt.executeQuery()) {
 				while (rs.next()) {
 					Customer cus = new Customer();
-					
+
 					int i = 1;
 					cus.setCustomerID(rs.getInt(i++));
 					cus.setCustomerName(rs.getString(i++));
@@ -51,7 +51,7 @@ public class CustomerDAO {
 					cus.setCity(rs.getString(i++));
 					cus.setPostalCode(rs.getString(i++));
 					cus.setCountry(rs.getString(i++));
-					
+
 					list.add(cus);
 				}
 			}
@@ -64,10 +64,10 @@ public class CustomerDAO {
 	public boolean insert(Connection con, Customer customer) {
 		String sql = "INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country) "
 				+ "   VALUES (?, ?, ?, ?, ?, ?)";
-		
+
 		int rowCount = 0;
 		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-			
+
 			// ? 채우기 
 			pstmt.setString(1, customer.getCustomerName());
 			pstmt.setString(2, customer.getContactName());
@@ -75,12 +75,12 @@ public class CustomerDAO {
 			pstmt.setString(4, customer.getCity());
 			pstmt.setString(5, customer.getPostalCode());
 			pstmt.setString(6, customer.getCountry());
-			
+
 			rowCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return rowCount == 1;
 	}
 
@@ -96,9 +96,9 @@ public class CustomerDAO {
 				"WHERE " + 
 				"    CustomerID = ? ";
 		int rowCount = 0;
-		
+
 		try(PreparedStatement pstm = con.prepareStatement(sql)) {
-			
+
 			pstm.setString(1, customer.getCustomerName());
 			pstm.setString(2, customer.getContactName());
 			pstm.setString(3, customer.getAddress());
@@ -111,8 +111,8 @@ public class CustomerDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
-		
+
+
 		return rowCount==1;
 	}
 
@@ -121,12 +121,12 @@ public class CustomerDAO {
 				+ "          PostalCode, Country "
 				+ "FROM Customers "
 				+ "WHERE CustomerID = ?";
-		
+
 		Customer customer = new Customer();
-		
+
 		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setInt(1, customerID);
-			
+
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs.next()) {
 					String customerName = rs.getString("CustomerName");
@@ -135,7 +135,7 @@ public class CustomerDAO {
 					String city = rs.getString("City");
 					String postalCode = rs.getString("PostalCode");
 					String country = rs.getString("Country");
-					
+
 					customer.setCustomerID(customerID);
 					customer.setCustomerName(customerName);
 					customer.setContactName(contactName);
@@ -148,25 +148,57 @@ public class CustomerDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
+
 		return customer;
 	}
 
 	public boolean deleteById(Connection con, int customerID) {
-String sql = "DELETE FROM Customers "+" WHERE CustomerID = ?";
-		
-try(PreparedStatement pstm=con.prepareStatement(sql)) {
-	pstm.setInt(1, customerID);
-	
-	int count =pstm.executeUpdate();
-	
-	return count ==1;
-} catch (Exception e) {
-	e.printStackTrace();
-	// TODO: handle exception
-}		
+		String sql = "DELETE FROM Customers "+" WHERE CustomerID = ?";
+
+		try(PreparedStatement pstm=con.prepareStatement(sql)) {
+			pstm.setInt(1, customerID);
+
+			int count =pstm.executeUpdate();
+
+			return count ==1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}		
 
 		return false;
+	}
+
+	public List<Customer> getCustomerList(Connection con) {
+		String sql = "SELECT CustomerID, CustomerName, ContactName, Address, City, "
+				+ "          PostalCode, Country "
+				+ "FROM Customers ";
+		ResultSet rs = null;        
+		List<Customer> list = new ArrayList<Customer>();
+
+		try (PreparedStatement pstm = con.prepareStatement(sql)){
+			rs = pstm.executeQuery();	
+			while(rs.next()) {
+
+				Customer cm = new Customer();
+				cm.setCustomerID(rs.getInt("CustomerID"));
+				cm.setCustomerName(rs.getString("CustomerName"));
+				cm.setContactName(rs.getString("ContactName"));
+				cm.setAddress(rs.getString("Address"));
+				cm.setCity(rs.getString("City"));
+				cm.setPostalCode(rs.getString("PostalCode"));
+				cm.setCountry(rs.getString("Country"));
+				list.add(cm);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+
+		return list;
 	}
 }
 
