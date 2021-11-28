@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import jdbc08.bean.Bean11;
-import jdbc08.dao.MyTable11Dao;
 
 /**
  * Servlet implementation class JDBC37Servlet
