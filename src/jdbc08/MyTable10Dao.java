@@ -3,7 +3,9 @@ package jdbc08;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyTable10Dao {
@@ -33,8 +35,36 @@ public class MyTable10Dao {
 	}
 
 	public List<Bean10> getList(Connection con) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Bean10> list = new ArrayList<Bean10>();
+		String sql = "SELECT col1 ,col2, col3, col4, col5, col6, col7 FROM mytable10";
+		
+		try (PreparedStatement pstm= con.prepareStatement(sql)){
+			ResultSet rs =pstm.executeQuery(sql);
+			
+			while(rs.next()) {
+				Bean10 bean = new Bean10();
+				bean.setCol1(rs.getInt("col1"));
+				bean.setCol2(rs.getDouble("col2"));
+				bean.setCol3(rs.getDouble("col3"));
+				bean.setCol4(rs.getString("col4"));
+				bean.setCol5(rs.getString("col5"));
+				bean.setCol6(rs.getDate("col6").toLocalDate());
+				bean.setCol7(rs.getTimestamp("col7").toLocalDateTime());
+				
+				list.add(bean);
+				
+				
+			}
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return list;
 	}
 
 }
