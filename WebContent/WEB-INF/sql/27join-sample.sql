@@ -8,3 +8,5 @@ FROM
         JOIN
     Categories c ON p.CategoryID = c.CategoryID
 ORDER BY 1 , 2;
+
+DESC Products;
