@@ -44,9 +44,11 @@ public class JDBC40Servlet extends HttpServlet {
 		String keyword = request.getParameter("keyword");
 		keyword = keyword == null ? "" : keyword;
 		
+		String year = request.getParameter("year");
+		
 		// 3. business logic
 		try (Connection con = ds.getConnection()) {
-			list = dao.getListByNotesKeyword(con, keyword);
+			list = dao.getListByNotesKeywordAndYear(con, keyword, year);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
