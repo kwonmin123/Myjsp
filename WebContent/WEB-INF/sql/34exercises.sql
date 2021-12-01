@@ -18,14 +18,7 @@ GROUP BY o.OrderDate
 ORDER BY o.OrderDate
 ;
 
--- 추가 총합
 
--- 회계같은 경우 전년도 남은 액수를 va안에 넣어도 될거같다
-SET @va = 0;
-SELECT a.OrderDate, sales, (@va := @va + sales) as total_sale 
-FROM (  SELECT o.OrderDate, sum( p.Price*od.Quantity) as sales
- FROM Orders o   JOIN OrderDetails  od on o.OrderID=od.OrderID
-				Join Products p on p.ProductID=od.ProductID GROUP BY OrderDate ) a;
 
 
 
