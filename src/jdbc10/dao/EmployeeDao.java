@@ -14,7 +14,9 @@ public class EmployeeDao {
 		List<Employee> list = new ArrayList<Employee>();
 		String sql = "SELECT employeeID, lastName, firstName, notes, birthDate "
 				+ "FROM Employees "
-				+ "WHERE notes LIKE ?";
+				+ "WHERE notes LIKE ? "
+				+ "     OR firstName LIKE ? "
+				+ "     OR lastName LIKE ? ";
 		
 		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setString(1, "%" + keyword + "%");
